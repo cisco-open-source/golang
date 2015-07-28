@@ -1,0 +1,14 @@
+--- src/runtime/os_linux.h	2015-07-28 20:57:08.061604727 +0200
++++ src/runtime/os_linux.h	2015-07-28 21:14:31.537626323 +0200
+@@ -16,7 +16,10 @@ void runtime·setitimer(int32, Itimerval
+ 
+ enum {
+ 	SS_DISABLE = 2,
+-	NSIG = 65,
++        // patch qemu arm issue
++        // -https://groups.google.com/forum/#!topic/golang-nuts/MqKTX_XIOKE
++        // -https://github.com/golang/go/issues/1508 
++	NSIG = 64,
+ 	SI_USER = 0,
+ 	SIG_SETMASK = 2,
+ 	RLIMIT_AS = 9,
